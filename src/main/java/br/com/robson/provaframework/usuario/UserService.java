@@ -46,6 +46,14 @@ public class UserService {
         return resultResponseList;
     }
 
+    public Usuario getById(Long idUsuario){
+        Optional<Usuario> usuario = userRepository.findById(idUsuario);
+        if (usuario.isPresent()) {
+            return usuario.get();
+        }
+        return null;
+    }
+
     public Usuario criaLogin(UsuarioVO usuarioVO){
 
         Usuario u = new Usuario();

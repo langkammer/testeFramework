@@ -21,6 +21,10 @@ public class Comentario {
 
     private String descricao;
 
+    public Comentario(){
+
+    }
+
     public Long getId() {
         return id;
     }

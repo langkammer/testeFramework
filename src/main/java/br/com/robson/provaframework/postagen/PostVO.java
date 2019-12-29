@@ -3,6 +3,7 @@ package br.com.robson.provaframework.postagen;
 import br.com.robson.provaframework.comment.Comentario;
 import br.com.robson.provaframework.usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostVO {
@@ -13,7 +14,25 @@ public class PostVO {
 
     private String descricao;
 
-    private Usuario autor;
+    public PostVO(){}
+
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
     private List<Comentario> comentarios;
 
@@ -46,10 +65,13 @@ public class PostVO {
 
         post.setNome(post.getNome());
         post.setDescricao(post.getDescricao());
-        if (!comentarios.isEmpty()) {
+        if (comentarios != null && !comentarios.isEmpty()) {
+            post.setComentarios(new ArrayList<Comentario>());
             post.setComentarios(comentarios);
         }
-        post.setAutor(autor);
+        if(usuario != null) {
+            post.setAutor(usuario);
+        }
         return post;
     }
 }
